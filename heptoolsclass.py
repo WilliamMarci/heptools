@@ -22,12 +22,32 @@ class HEPExp:
     def set_title(self,title):
         self.title=title
     def set_lumi(self,lumi_num,lumi_unit):
+        '''
+        ## Set luminosity
+        - lumi_num: luminosity number -> float
+        - lumi_unit: luminosity unit -> str 
+        - lumi_unit: 'nb-1', 'pb-1', 'fb-1', 'ab-1'
+        '''
         self.lumi_num=lumi_num
         self.lumi_unit=lumi_unit
     def set_xsec(self,xsec_num,xsec_unit):
+        '''
+        ## Set cross-section
+        - xsec_num: cross-section number -> float
+        - xsec_unit: cross-section unit -> str
+        - xsec_unit: 'nb', 'pb', 'fb', 'ab'
+        '''
         self.xsec_num=xsec_num
         self.xsec_unit=xsec_unit
     def set_LHC(self, run='Run2'):
+        '''
+        ## Set luminosity from LHC data
+        - run: LHC run -> str
+        ### Options:
+        - 'Run2': 140 fb-1
+        - 'Run3': 300 fb-1
+        - 'HL-LHC': 3000 fb-1
+        '''
         if run=='Run2':
             self.set_lumi(140, 'fb-1')
         elif run=='Run3':
