@@ -24,7 +24,11 @@ def calculate_hist_stats(data_list, sample_per_exp, bins=None):
     if total_samples % sample_per_exp != 0:
         print(f"Warning: 截断 {total_samples - n_exp*sample_per_exp} 个无法分组的数据")
         data = data[:n_exp*sample_per_exp]
-    
+    if n_exp == 0:
+        # 使用np.randomchoice倍增数据达到实验次数
+        n_exp = 1
+        data = np.random.choice(data, size=sample_per_exp, replace=True)
+        print(f"Warning: 实验次数不足，使用随机抽样数据达到实验次数 {n_exp}")
     # 分割为多组实验数据
     data_groups = data.reshape(n_exp, sample_per_exp)
     
